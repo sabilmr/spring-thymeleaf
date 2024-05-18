@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Category-Detail</title>
+</head>
+<body>
+<div class="row" layout:fragment="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Detail Category</h3>
+            </div>
+            <div class="card-body">
+                <form th:action="@{~/category}" method="get">
+                    <input type="hidden" name="id" th:value="${data.id}">
+    <!--                    <div class="mb-3">-->
+    <!--                        <label for="id" class="form-label">Id :</label>-->
+    <!--                        <input type="text" id="id" name="id" class="form-control" th:value="${data.id}" aria-labelledby="idHelp" readonly />-->
+    <!--                        <div id="idHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+    <!--                    </div>-->
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name :</label>
+                        <input type="text" class="form-control" id="name" name="name" th:value="${data.name}" aria-describedby="nameHelp" readonly />
+                        <div id="nameHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description :</label>
+                        <input type="text" class="form-control" id="description" name="description" th:value="${data.description}" aria-describedby="descriptionHelp" readonly />
+                        <div id="descriptionHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a th:href="@{~/category}" class="btn btn-secondary">Close</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Category Detail</h3>
+
+</body>
+</html>

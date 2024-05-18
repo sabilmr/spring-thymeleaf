@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Product - Edit</title>
+</head>
+<body>
+<div class="row" layout:fragment="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Edit Product</h3>
+            </div>
+            <div class="card-body">
+                <form th:action="@{~/product/update}" method="post">
+                    <input type="hidden" name="id" th:value="${product.id}">
+<!--                     <div class="mb-3">-->
+<!--                        <label for="id" class="form-label">Id :</label>-->
+<!--                        <input type="text" class="form-control" id="id" name="id" th:value="${product.id}" aria-describedby="idHelp" placeholder="id">-->
+<!--                        <div id="idHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+<!--                    </div>-->
+
+                    <div class="mb3">
+                        <label for="categoryName" class="form-label">Category :</label>
+                        <input type="hidden" name="categoryId" th:value="${product.categoryId}">
+                        <select id="categoryName" name="categoryName" class="form-select" th:value="${product.categoryName}" aria-describedby="categoryIdHelp">
+                            <option>Pilih Category</option>
+                            <option th:each="item : ${category}" th:value="${item.name}"
+                                    th:text="${item.name}" th:selected="${item.name == product.categoryName}"></option>
+                        </select>
+                        <div id="categoryIdHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <div class="mb3">
+                        <label for="name" class="form-label">Name :</label>
+                        <input id="name" name="name" class="form-control" th:value="${product.name}" aria-describedby="nameHelp" placeholder="name" />
+                        <div id="nameHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <div class="mb3">
+                        <label for="description" class="form-label">Description :</label>
+                        <input id="description" name="description" class="form-control  " th:value="${product.description}" aria-describedby="descriptionHelp" placeholder="description" />
+                        <div id="descriptionHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price :</label>
+                        <input type="text" class="form-control" id="price" name="price" th:value="${product.price}" aria-describedby="priceHelp" placeholder="price">
+                        <div id="priceHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity :</label>
+                        <input type="text" class="form-control" id="quantity" name="quantity" th:value="${product.quantity}" aria-describedby="quantityHelp" placeholder="quantity">
+                        <div id="quantityHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" style="margin-right: 5px">Save Changes</button>
+                        <a th:href="@{~/product}" class="btn btn-secondary">Close</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

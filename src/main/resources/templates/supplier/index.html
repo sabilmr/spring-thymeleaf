@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplier - Index</title>
+</head>
+<body>
+<div class="row" layout:fragment="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h3 class="mr-auto p-3">Supplier</h3>
+                    <div class="ms-auto" role="group">
+                        <a th:href="@{~/supplier/add}" class="btn btn-primary">Add Supplier</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Company Name</th>
+                        <th>Contact Name</th>
+                        <th>Contact Title</th>
+                        <th>Address</th>
+                        <th>City</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${suppliers}">
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.companyName}"></td>
+                        <td th:text="${item.contactName}"></td>
+                        <td th:text="${item.contactTitle}"></td>
+                        <td th:text="${item.address}"></td>
+                        <td th:text="${item.city}"></td>
+                        <td>
+                            <a th:href="@{~/supplier/delete/{id}(id = ${item.id})}"
+                               class="btn btn-xs btn-danger float-end">
+                                Delete
+                            </a>
+                            <a th:href="@{~/supplier/edit/{id}(id = ${item.id})}" style="margin-right: 5px"
+                               class="btn btn-primary float-end">
+                                Edit
+                            </a>
+                            <a th:href="@{~/supplier/detail/{id}(id = ${item.id})}"
+                               class="btn btn-success float-end" style="margin-right: 5px">
+                                Detail
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
