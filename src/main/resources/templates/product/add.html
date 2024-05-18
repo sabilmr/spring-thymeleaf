@@ -13,15 +13,8 @@
             </div>
             <div class="card-body">
                 <form th:action="@{~/product/save}" method="post">
-<!--                     <div class="mb-3">-->
-<!--                        <label for="id" class="form-label">Id :</label>-->
-<!--                        <input type="text" class="form-control" id="id" name="id" th:value="${product.id}" aria-describedby="idHelp" placeholder="id">-->
-<!--                        <div id="idHelp" class="form-text">We'll never share your email with anyone else.</div>-->
-<!--                    </div>-->
-
                     <div class="mb3">
                         <label for="categoryName" class="form-label">Category :</label>
-                        <input type="hidden" name="categoryId" th:value="${product.categoryId}">
                         <select id="categoryName" name="categoryName" class="form-select" th:value="${product.categoryName}" aria-describedby="categoryNHelp">
                             <option value="">Pilih Category</option>
                             <option th:each="item : ${category}" th:value="${item.name}"
