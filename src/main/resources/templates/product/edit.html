@@ -17,7 +17,6 @@
 
                     <div class="mb3">
                         <label for="categoryName" class="form-label">Category :</label>
-                        <input type="hidden" name="categoryId" th:value="${product.categoryId}">
                         <select id="categoryName" name="categoryName" class="form-select" th:value="${product.categoryName}" aria-describedby="categoryIdHelp">
                             <option>Pilih Category</option>
                             <option th:each="item : ${category}" th:value="${item.name}"
