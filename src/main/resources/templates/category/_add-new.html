@@ -1,0 +1,24 @@
+<form xmlns:th="http://www.thymeleaf.org" th:action="@{~/category/save}" method="post">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Category</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" th:value="${data.name}" class="form-control"  aria-describedby="namePrice" placeholder="name" />
+                <div id="nameHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" id="description" name="description" th:value="${data.description}" class="form-control" aria-describedby="descriptionHelp" placeholder="description" />
+                <div id="descriptionHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Save Changes</button>
+        </div>
+    </div>
+</form>

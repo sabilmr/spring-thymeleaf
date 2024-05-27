@@ -30,6 +30,7 @@ public class ProductController {
 
         List<ProductResponse> products2 =productService.getProducts();
         mav.addObject("products", products2);
+        addObject(mav);
         return mav;
     }
 
@@ -52,7 +53,6 @@ public class ProductController {
     public ModelAndView add() {
         ModelAndView mav = new ModelAndView("product/add");
         mav.addObject("product", new ProductRequest());
-        addObject(mav);
         return mav;
     }
 

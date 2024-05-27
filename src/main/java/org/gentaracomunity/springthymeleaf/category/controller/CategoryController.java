@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/category")
-public class CategoryController {
+public class CategoryController{
 
     @Autowired
     private CategoryService categoryService;
@@ -44,13 +44,23 @@ public class CategoryController {
     @GetMapping("/add")
     public ModelAndView add() {
         ModelAndView view = new ModelAndView("category/add");
+        view.addObject("category", new CategoryRequest());
+        return view;
+    }
+
+    @GetMapping("/add-new")
+    public ModelAndView addNew() {
+        ModelAndView view = new ModelAndView("category/_add-new");
         view.addObject("data", new CategoryRequest());
         return view;
     }
 
     @PostMapping("/save")
     public ModelAndView save(@ModelAttribute("category") CategoryRequest request){
-         categoryService.save(request);
+        ModelAndView view = new ModelAndView("category/_add-new");
+        view.addObject("data", request);
+
+        categoryService.save(request);
         return new ModelAndView("redirect:/category");
     }
 

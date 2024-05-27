@@ -1,57 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
-<head>
-    <meta charset="UTF-8">
-    <title>Supplier - Add</title>
-</head>
-<body>
-<div class="row" layout:fragment="content">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Add Supplier</h3>
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Supplier</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form th:action="@{~/supplier/save}" method="post">
+            <div class="mb-3">
+                <label for="companyName" class="form-label">Company Name :</label>
+                <input type="text" id="companyName" name="companyName" class="form-control" th:value="${supplier.companyName}" aria-describedby="companyNameHelp" placeholder="companyName">
+                <div id="companyNameHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
-            <div class="card-body">
-                <form th:action="@{~/supplier/save}" method="post">
 
-                    <div class="mb-3">
-                        <label for="companyName" class="form-label">Company Name :</label>
-                        <input type="text" id="companyName" name="companyName" class="form-control" th:value="${supplier.companyName}" aria-describedby="companyNameHelp" placeholder="companyName">
-                        <div id="companyNameHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="contactName" class="form-label">Contact Name :</label>
-                        <input type="text" id="contactName" name="contactName" class="form-control" th:value="${supplier.contactName}" aria-describedby="contactNameHelp" placeholder="contactName">
-                        <div id="contactNameHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="contactTitle" class="form-label">Contact Title :</label>
-                        <input type="text" id="contactTitle" name="contactTitle" class="form-control" th:value="${supplier.contactTitle}" aria-describedby="contactTitleHelp" placeholder="contactTitle">
-                        <div id="contactTitleHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Address :</label>
-                        <input type="text" id="address" name="address" class="form-control" th:value="${supplier.address}" aria-describedby="addressHelp" placeholder="address">
-                        <div id="addressHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="city" class="form-label">City :</label>
-                        <input type="text" id="city" name="city" class="form-control" th:value="${supplier.city}" aria-describedby="cityHelp" placeholder="city">
-                        <div id="cityHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button class="btn btn-success" style="margin-right: 5px">Save</button>
-                        <a th:href="@{~/supplier}" class="btn btn-secondary">Close</a>
-                    </div>
-                </form>
+            <div class="mb-3">
+                <label for="contactName" class="form-label">Contact Name :</label>
+                <input type="text" id="contactName" name="contactName" class="form-control" th:value="${supplier.contactName}" aria-describedby="contactNameHelp" placeholder="contactName">
+                <div id="contactNameHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
-        </div>
+
+            <div class="mb-3">
+                <label for="contactTitle" class="form-label">Contact Title :</label>
+                <input type="text" id="contactTitle" name="contactTitle" class="form-control" th:value="${supplier.contactTitle}" aria-describedby="contactTitleHelp" placeholder="contactTitle">
+                <div id="contactTitleHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">Address :</label>
+                <input type="text" id="address" name="address" class="form-control" th:value="${supplier.address}" aria-describedby="addressHelp" placeholder="address">
+                <div id="addressHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="city" class="form-label">City :</label>
+                <input type="text" id="city" name="city" class="form-control" th:value="${supplier.city}" aria-describedby="cityHelp" placeholder="city">
+                <div id="cityHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Save Changes</button>
+            </div>
+        </form>
     </div>
 </div>
-</body>
-</html>

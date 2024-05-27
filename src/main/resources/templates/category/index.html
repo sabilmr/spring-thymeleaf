@@ -10,11 +10,14 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex align-items-center">
-                    <h3 class="mr-auto p-3">Category</h3>
+                    <h3 class="mr-auto p-3" id="category-title">Category</h3>
                     <div class="ms-auto" role="group">
                         <!-- Button trigger modal -->
-                        <button id="openModalBtn" class="btn btn-primary">
+                        <a id="btn-add" class="btn btn-primary" th:href="@{~/category/add}">
                             Add Category
+                        </a>
+                        <button id="show-modal" class="btn btn-danger" th:href="@{~/category/add-new}">
+                            Show Modal
                         </button>
                     </div>
                 </div>
@@ -30,20 +33,20 @@
                     </thead>
                     <tbody>
                     <tr th:each="item : ${data}">
-                        <td th:text="${item.id}"></td>
+                        <th th:text="${item.id}"></th>
                         <td th:text="${item.name}"></td>
                         <td th:text="${item.description}"></td>
                         <td>
                             <a th:href="@{~/category/delete/{id}(id = ${item.id})}"
-                               class="btn btn-xs btn-danger float-end">
+                               class="btn btn-xs btn-danger float-end btn-delete">
                                 Delete
                             </a>
                             <a th:href="@{~/category/edit/{id}(id = ${item.id})}" style="margin-right: 5px"
-                               class="btn btn-primary float-end">
+                               class="btn btn-primary float-end btn-edit">
                                 Edit
                             </a>
                             <a th:href="@{~/category/{id}(id = ${item.id})}"
-                               class="btn btn-success float-end" style="margin-right: 5px">
+                               class="btn btn-success float-end btn-view" style="margin-right: 5px">
                                 Detail
                             </a>
                         </td>
@@ -53,37 +56,64 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Category</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form th:action="@{~/category/save}" method="post" id="categoryForm">
-                        <input type="hidden" name="id">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name :</label>
-                            <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="name">
-                            <div id="nameHelp" class="form-text">We'll never share your email with anyone else.</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Description :</label>
-                            <input type="text" class="form-control" id="description" name="description" aria-describedby="descriptionHelp" placeholder="description">
-                            <div id="descriptionHelp" class="form-text">We'll never share your email with anyone else.</div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="saveChanges">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+<!-- Modal -->
+<th:block layout:fragment="script">
+    <script>
+        $(document).ready(function (){
+            $('#show-modal').click(function (add){
+                add.preventDefault();
+
+                getShowModal($(this));
+            });
+
+            $('.btn-view').click(function (view){
+                view.preventDefault();
+
+                getShowModal($(this));
+            });
+
+            $('.btn-edit').click(function (edit){
+                edit.preventDefault();
+
+                getShowModal($(this));
+            });
+
+            $('.btn-delete').click(function (hapus){
+                hapus.preventDefault();
+
+                getShowModal($(this));
+            });
+
+            // var newButton = $('<button></button>')
+            //     .addClass('btn btn-warning')
+            //     .text('Edit')
+            //     .on('click', function (){
+            //         $(this).parent().remove();
+            //     });
+            // $('.modal-footer').append(newButton);
+            //
+            // var judul = $('<h3></h3>')
+            //     .addClass('modal-title')
+            //     .text('Sabilla Muhammad Rayhan')
+            // $('.modal-header').append(judul);
+            // $('#exampleModal').modal('show');
+
+            function getShowModal(popup){
+                var url = $(popup).attr('href');
+
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    dataType: 'HTML',
+                    success: function (hasil){
+                        $('.modal-content').html(hasil);
+                        $('#main-modal').modal('show');
+                    }
+                });
+            }
+        });
+    </script>
+</th:block>
 </body>
 </html>

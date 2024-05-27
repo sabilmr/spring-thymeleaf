@@ -101,8 +101,20 @@
         </div>
     </main>
     <!-- end content -->
+    <div class="modal fade" id="main-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+
     <script th:src="@{~/dist/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{~/js/color-modes.js}"></script>
-    <script th:src="@{~/js/scripts.js}"></script>
+    <script th:src="@{~/js/jquery-3.7.1.min.js}"></script>
+
+    <th:block layout:fragment="script">
+
+    </th:block>
 </body>
 </html>
